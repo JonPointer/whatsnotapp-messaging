@@ -1,0 +1,50 @@
+
+
+Setup - James:
+
+    npm init -y
+
+    npm i:
+    mysql2
+    express
+    sequelize
+    dotenv
+
+    Create .gitignore:
+        node_modules
+        .env
+
+    Use sequelize-cli to establish structure
+
+Then James does a git push (which someone will have to approve)
+
+Rest of us then do git pulls
+
+Assignments:
+
+    Connection to Heroku and setting up database on Heroku - JAMES
+
+    Looking into Socket.io - KAI
+
+    Other useful npm tools? - JUAN
+
+    Front page mockup - JON
+
+
+
+    SQL schema, seeds, model/table creation...
+
+    Connection config stuff
+
+    Front end handlebars files
+
+    View.js to go with the front end html & css - in the public folder
+
+    API routes
+
+    html routes
+
+    How to constantly query and display any database updates with js 
+
+
+
