@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "DB_USER",
-    "password": "DB_PASS",
+    "username": "root",
+    "password": "Blessing@16",
     "database": "whats_not_appDB",
-    "host": "DB_HOST",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
