@@ -2,24 +2,24 @@ const db = require("../models");
 
 module.exports = (app) => {
 
-  
-  //GET route for getting all messages
-  app.get("/api/messages", (req, res) => {
-    // findAll returns all entries for a table when used with no options
-    db.Message.findAll({}).then((dbMessage) => res.json(dbMessage));
-    res.render("index");
-  });
-
   //POST route for saving new message to db
   app.post("/api/messages", (req, res) => {
     db.Message.create({
-      username: req.body.text,
-      message: req.body.text,
+      username: req.body.username,
+      body: req.body.message,
     }).then((dbMessage) => res.json(dbMessage));
   });
 
-  //from chat example...not sure what to do with this
+  //GET route for reading all messages from the database and displaying them
   app.get("/", (req, res) => {
-    res.render("index");
+    db.Message.findAll({}).then((dbMessage) => {
+      // Construct a new array from the username and body values of dbMessage
+      let passArray = [];
+      for (i = 0; i < dbMessage.length; i++) {
+        passArray[i] = { username: dbMessage[i].username, body: dbMessage[i].body };
+      }
+      // Now pass this array to index to be rendered
+      res.render("index", { values: passArray });
+    });
   });
 };
