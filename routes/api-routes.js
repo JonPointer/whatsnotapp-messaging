@@ -1,6 +1,8 @@
 const db = require("../models");
 
 module.exports = (app) => {
+
+  
   //GET route for getting all messages
   app.get("/api/messages", (req, res) => {
     // findAll returns all entries for a table when used with no options
