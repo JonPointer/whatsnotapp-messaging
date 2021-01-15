@@ -1,42 +1,22 @@
-// *********************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-const app = require("express")();
-const http = require("http").Server(app);
-const io = require("socket.io")(http);
+const express = require("express");
+const exphbs = require("express-handlebars");
 const db = require("./models");
+const path = require("path");
 
-// Sets up the Express App
-// =============================================================
-//const app = express();
+const app = express();
 const PORT = process.env.PORT || 8080;
 
-io.on('connection', (socket) => {
-    socket.on('chat message', msg => {
-      io.emit('chat message', msg);
-    });
-  });
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-db.sequelize.sync().then(function () {
-  app.listen(PORT, function () {
-    console.log("Listening on port %s", PORT);
-  });
+app.use(express.static("app/public"));
+
+require("./routes/api-routes")(app);
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.use(express.static(path.join(__dirname, "/")));
+app.set("view engine", "handlebars");
+
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
 });
-
-// Sets up the Express app to handle data parsing
-// app.use(app.urlencoded({ extended: true }));
-// app.use(app.json());
-
-// Static directory to be served
-// app.use(app.static("app/public"));
-
-// Routes
-// =============================================================
-// require("./routes/api-routes")(app);
-
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, () => console.log(`listening on PORT ${PORT}`));

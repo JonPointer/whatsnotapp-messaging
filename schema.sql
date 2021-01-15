@@ -1,1 +1,2 @@
+DROP DATABASE IF EXISTS whats_not_appDB;
 CREATE DATABASE whats_not_appDB;
