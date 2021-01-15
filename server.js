@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
@@ -5,6 +6,7 @@ const io = require("socket.io")(http);
 const exphbs = require("express-handlebars");
 const db = require("./models");
 const path = require("path");
+
 
 const PORT = process.env.PORT || 8080;
 

@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "Blessing@16",
+    "username": {"ENV": "DB_USER"},
+    "password": {"ENV": "DB_PASS"},
     "database": "whats_not_appDB",
-    "host": "127.0.0.1",
+    "host": {"ENV": "DB_HOST"},
     "dialect": "mysql"
   },
   "test": {
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "DB_USER",
-    "password": "DB_PASS",
-    "database": "whats_not_appDB",
-    "host": "DB_HOST",
+    "username": {"ENV": "DB_USER"},
+    "password": {"ENV": "DB_PASS"},
+    "database": {"ENV": "PROD_DATABASE"},
+    "host": {"ENV": "DB_HOST"},
     "dialect": "mysql"
   }
 }

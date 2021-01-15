@@ -8,6 +8,12 @@ const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
 const db = {};
 
+for (let key in config) {
+  if (config[key].ENV != null) {
+    config[key] = process.env[config[key].ENV];
+  }
+}
+
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
