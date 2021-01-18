@@ -35,7 +35,7 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-const viewAllBtn = document.getElementById("viewAllBtn");
+const viewAllBtn = document.getElementById("all-button");
 if (viewAllBtn) {
   viewAllBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ if (viewAllBtn) {
   });
 }
 
-const userBtn = document.getElementById("userBtn");
+const userBtn = document.getElementsByClassName(".selectWO");
 if (userBtn) {
   userBtn.addEventListener("click", (e) => {
     e.preventDefault();

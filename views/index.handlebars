@@ -19,11 +19,11 @@
 
                     <ul class="list-group mx-auto w-100">
                             <li>
-                                <button data-id="all-button" class="selectWO btn btn-primary mb-1 mx-auto">All</button>
+                                <button data-id="all-button" id='userBtn 'class="selectWO btn btn-primary mb-1 mx-auto">All</button>
                             </li>
                             {{#each values }}
                                 <li>
-                                    <button data-id="{{this.id}}" class="selectWO btn btn-primary mb-1 mx-auto">{{username}}</button>
+                                    <button data-id="{{this.id}}" id='userBtn class="selectWO btn btn-primary mb-1 mx-auto">{{username}}</button>
                                 </li>
                             {{/each}}  
                     </ul>
