@@ -5,6 +5,10 @@ body {
     Arial, sans-serif;
 }
 
+#top-banner {
+  font-family: "Yeon Sung", cursive;
+}
+
 #form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
@@ -61,4 +65,12 @@ body {
 
 #messages > li:nth-child(odd) {
   background: rgb(223, 223, 223);
+}
+
+.list-group,
+#messages {
+  max-height: 600px;
+  margin-bottom: 10px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
