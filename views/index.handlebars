@@ -1,5 +1,55 @@
-    {{#each values }}
-    <li>
-        {{username}}: {{body}}
-    </li>
-    {{/each}}
+
+<section class="container-md">
+        <div class="row">
+            <!-- Left section for refresh and users list  -->
+            <aside class="col-md-3 bg-light">
+                <!-- Refresh Button  -->
+                <!-- id = refresh-button for JS code that calls route -->
+                <li class="list-group-item"><button type="button"
+                                class="btn btn-light w-100 text-left" id="refresh-button"><h5>Refresh</h5></button></li>
+                <!-- Section for choosing which messages to display  -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Display Msgs From:</h5>
+                    </div>
+                    <!-- List of buttons -->
+
+                    <!-- *** NOTE - "values" below needs to be placed by other array being sent 
+                                    from the route containing the usernames -->
+
+                    <ul class="list-group mx-auto w-100">
+                            <li>
+                                <button data-id="all-button" class="selectWO btn btn-primary mb-1 mx-auto">All</button>
+                            </li>
+                            {{#each values }}
+                                <li>
+                                    <button data-id="{{this.id}}" class="selectWO btn btn-primary mb-1 mx-auto">{{username}}</button>
+                                </li>
+                            {{/each}}  
+                    </ul>
+                </div>
+            </aside>
+            <!-- Right section for display of messages  -->
+            <section class="col-md-9">
+                <div class="panel panel-primary" id="result_panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Messages</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul id="messages">
+                            {{#each values }}
+                                <li>
+                                    {{username}}: {{body}}
+                                </li>
+                            {{/each}}         
+                        </ul>  
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+
+
+    
