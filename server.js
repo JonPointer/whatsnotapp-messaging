@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(express.static("app/public"));
 
-require("./routes/api-routes")(app);
+require("./routes/message-api-routes")(app);
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.use(express.static(path.join(__dirname, "/")));
