@@ -4,7 +4,58 @@ const socket = io();
 
 const messages = document.getElementById("messages");
 const form = document.getElementById("form");
+const userForm = document.getElementById("userForm");
 const input = document.getElementById("input");
+const refresh = document.getElementById("refresh-button");
+
+refresh.onclick = () => {
+  location.reload("/");
+}
+
+userDisplay = (objButton) => {
+  console.log(objButton.value);
+
+  fetch(`/api/${objButton.value}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      userID = data.id;
+      console.log('Success in displaying user:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
+
+
+let userID = 0;
+
+userForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (username.value) {
+    // Call API for a new user
+    fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: username.value }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        userID = data.id;
+        console.log('Success in adding user:', data);
+        console.log(userID);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -14,8 +65,8 @@ form.addEventListener("submit", (e) => {
     // API to add to the database
     // First need to build an object of the message and user
     let newMsg = {
-      username: username.value,
       message: input.value,
+      UserId: userID,
     }
     // Now call the API with the newMsg object
     fetch('/api/messages', {
