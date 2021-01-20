@@ -45,7 +45,7 @@ module.exports = (app) => {
   });
 
 
-  app.get('/api/:id?', (req, res) => {
+  app.get('/:id?', (req, res) => {
     if (req.params.id) {
       // Display the JSON for ONLY that character.
       // (Note how we're using the ORM here to run our searches)
@@ -72,25 +72,22 @@ module.exports = (app) => {
           }
 
           // Now pass these array to index to be rendered
-          // console.log(msgArray);
-          // console.log(userArray);
+          console.log(msgArray);
+          console.log(userArray);
 
           // This render is causing an error that is displayed at the terminal
           // "Cannot set headers after they are sent to the client"
-          // res.render("index", { values: msgArray, users: userArray });
+          res.render("index", { values: msgArray, users: userArray });
 
-          res.json(dbMessage);
+          // res.json(dbUser);
         });
 
       });
 
 
-
-
-
-
     } else {
-      Character.findAll().then((result) => res.json(result));
+
+      // Character.findAll().then((result) => res.json(result));
     }
   });
 

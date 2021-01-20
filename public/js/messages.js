@@ -9,30 +9,47 @@ const input = document.getElementById("input");
 const refresh = document.getElementById("refresh-button");
 
 refresh.onclick = () => {
-  location.reload("/");
+  // location.reload("/");
+  location.href = "/";
+
 }
 
 userDisplay = (objButton) => {
   console.log(objButton.value);
+  location.href = `/${objButton.value}`;
 
-  fetch(`/api/${objButton.value}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      userID = data.id;
-      console.log('Success in displaying user:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+
+  // fetch(`/api/${objButton.value}`, {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     userID = data.id;
+  //     console.log('Success in displaying user:', data);
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:', error);
+  //   });
 };
 
 
-let userID = 0;
+var userID = localStorage.getItem("userID");
+var usersName = localStorage.getItem("usersName");
+console.log(userID + ": " + usersName);
+
+
+// Read in high scores and set all to zero if first time using program.
+if (usersName === null) {
+  //
+} else {
+  // usersName exist in storage, so use display it.
+  username.value = usersName;
+}
+
+// let userID = 0;
 
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -48,6 +65,9 @@ userForm.addEventListener("submit", (e) => {
       .then((response) => response.json())
       .then((data) => {
         userID = data.id;
+        // Now need to store the usersName and userID to local storage
+        localStorage.setItem("usersName", username.value);
+        localStorage.setItem("userID", userID);
         console.log('Success in adding user:', data);
         console.log(userID);
       })
