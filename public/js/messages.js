@@ -41,12 +41,10 @@ var msgFromUser = "";
 
 var userID = localStorage.getItem("userID");
 var usersName = localStorage.getItem("usersName");
-console.log(userID + ": " + usersName);
 
-
-// Read in high scores and set all to zero if first time using program.
+// Read in usersName and set all to empty if first time using program.
 if (usersName === null) {
-  //
+  usersName = "";
 } else {
   // usersName exist in storage, so use display it.
   username.value = usersName;
@@ -84,10 +82,9 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   if ((input.value) && (username.value)) {
 
-    console.log(userID);
-    console.log(usersName.trim() + " : " + username.value.trim());
+    // console.log(userID);
+    // console.log(usersName.trim() + " : " + username.value.trim());
 
-    // if ((userID === null) && (username.value) && (input.value)) {
     if ((userID === null) || (usersName.trim() != username.value.trim())) {
 
       msgFromUser = input.value;
