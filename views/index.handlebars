@@ -9,7 +9,7 @@
 	                <input id="username" autocomplete="off" placeholder="Enter Your Name" /><button>Send</button>
                 </form> --}}
                 <li class="list-group-item"><button type="button"
-                                class="btn btn-light w-100 text-left" id="refresh-button"><h5>Refresh Messages</h5></button></li>
+                                class="leftBtns btn btn-primary mb-1 mx-auto" id="refresh-button">Refresh Messages</button></li>
                 <!-- Section for choosing which messages to display  -->
                 <div class="card mb-4">
                     <div class="card-header">
@@ -19,7 +19,7 @@
                     <ul class="list-group mx-auto w-100">
                             {{#each users }}
                                 <li>
-                                    <button onclick='userDisplay(this)' value={{id}} class="userListBtn btn btn-primary mb-1 mx-auto">{{username}}</button>
+                                    <button onclick='userDisplay(this)' value={{id}} class="leftBtns btn btn-primary mb-1 mx-auto">{{username}}</button>
                                 </li>
                             {{/each}}  
                     </ul>
