@@ -5,25 +5,21 @@
             <aside class="col-md-3 bg-light">
                 <!-- Refresh Button  -->
                 <!-- id = refresh-button for JS code that calls route -->
+                <form class="container-md rounded-top" id="userForm" action="">
+	                <input id="username" autocomplete="off" placeholder="Enter Your Name" /><button>Send</button>
+                </form>
                 <li class="list-group-item"><button type="button"
-                                class="btn btn-light w-100 text-left" id="refresh-button"><h5>Refresh</h5></button></li>
+                                class="btn btn-light w-100 text-left" id="refresh-button"><h5>Refresh User List</h5></button></li>
                 <!-- Section for choosing which messages to display  -->
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h5>Display Msgs From:</h5>
+                        <h5>Filter Msgs From:</h5>
                     </div>
                     <!-- List of buttons -->
-
-                    <!-- *** NOTE - "values" below needs to be placed by other array being sent 
-                                    from the route containing the usernames -->
-
                     <ul class="list-group mx-auto w-100">
-                            <li>
-                                <button data-id="all-button" class="selectWO btn btn-primary mb-1 mx-auto">All</button>
-                            </li>
-                            {{#each values }}
+                            {{#each users }}
                                 <li>
-                                    <button data-id="{{this.id}}" class="selectWO btn btn-primary mb-1 mx-auto">{{username}}</button>
+                                    <button onclick='userDisplay(this)' value={{id}} class="userListBtn btn btn-primary mb-1 mx-auto">{{username}}</button>
                                 </li>
                             {{/each}}  
                     </ul>
