@@ -1,51 +1,68 @@
-
 <section class="container-md">
-        <div class="row">
-            <!-- Left section for refresh and users list  -->
-            <aside class="col-md-3 bg-light">
-                <!-- Refresh Button  -->
-                <!-- id = refresh-button for JS code that calls route -->
-                {{!-- <form class="container-md rounded-top" id="userForm" action="">
-	                <input id="username" autocomplete="off" placeholder="Enter Your Name" /><button>Send</button>
-                </form> --}}
-                <li class="list-group-item"><button type="button"
-                                class="btn btn-light w-100 text-left" id="refresh-button"><h5>Refresh Messages</h5></button></li>
-                <!-- Section for choosing which messages to display  -->
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5>Filter Msgs From:</h5>
-                    </div>
-                    <!-- List of buttons -->
-                    <ul class="list-group mx-auto w-100">
+    <div class="row">
+        <!-- Left section for refresh and users list  -->
+        <aside class="col-md-3 bg-light">
+            <!-- Refresh Button  -->
+            <!-- id = refresh-button for JS code that calls route -->
+            {{!-- <form class="container-md rounded-top" id="userForm" action="">
+                <input id="username" autocomplete="off" placeholder="Enter Your Name" /><button>Send</button>
+            </form> --}}
+            <li class="list-group-item"><button type="button" class="btn btn-light w-100 text-left fas
+                    fa-retweet" id="refresh-button">
+                    <h5></h5>
+                </button></li>
+            <!-- Section for choosing which messages to display  -->
+            <div class="card mb-4">
+                <div class="card-header">
+
+                    <!-- Example single danger button -->
+
+                    <div class="dropdown">
+                        <a class="btn btn-info dropdown-toggle fas fa-filter" href="#" role="button"
+                            id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             {{#each users }}
-                                <li>
-                                    <button onclick='userDisplay(this)' value={{id}} class="userListBtn btn btn-primary mb-1 mx-auto">{{username}}</button>
-                                </li>
-                            {{/each}}  
+                            <li>
+                                <button onclick='userDisplay(this)' value={{id}}
+                                    class="userListBtn btn btn-primary mb-1 mx-auto fas fa-user-circle">
+                                    {{username}}</button>
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+
+
+
+                </div>
+                <!-- List of buttons -->
+                <h4 id="usericon" <i class="fas fa-users "></h4>
+                <ul class="list-group mx-auto w-100">
+                    {{#each users }}
+                    <li value={{id}} class="userListBtn btn btn-primary mb-1 mx-auto fas fa-user-circle">
+                        {{username}}
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </aside>
+        <!-- Right section for display of messages  -->
+        <section class="col-md-9">
+            <div class="panel panel-primary" id="result_panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title fas fa-comment-alt"> Messages</h3>
+                </div>
+                <div class="panel-body">
+                    <ul id="messages">
+                        {{#each values }}
+                        <li>
+                            {{username}}: {{body}}
+                        </li>
+                        {{/each}}
                     </ul>
                 </div>
-            </aside>
-            <!-- Right section for display of messages  -->
-            <section class="col-md-9">
-                <div class="panel panel-primary" id="result_panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Messages</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul id="messages">
-                            {{#each values }}
-                                <li>
-                                    {{username}}: {{body}}
-                                </li>
-                            {{/each}}         
-                        </ul>  
-                    </div>
-                </div>
-            </section>
-        </div>
-    </section>
-
-
-
-
-    
+            </div>
+        </section>
+    </div>
+</section>

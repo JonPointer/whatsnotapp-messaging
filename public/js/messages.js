@@ -1,5 +1,3 @@
-
-
 const socket = io();
 
 const messages = document.getElementById("messages");
@@ -11,7 +9,7 @@ const refresh = document.getElementById("refresh-button");
 // Load / on first load
 refresh.onclick = () => {
   location.href = "/";
-}
+};
 
 // Auto scroll to the bottom of messages on load
 messages.scrollTop = messages.scrollHeight;
@@ -39,16 +37,14 @@ if (usersName === null) {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if ((input.value) && (username.value)) {
-
-    if ((userID === null) || (usersName.trim() != username.value.trim())) {
-
+  if (input.value && username.value) {
+    if (userID === null || usersName.trim() != username.value.trim()) {
       msgFromUser = input.value;
 
-      fetch('/api/users', {
-        method: 'POST',
+      fetch("/api/users", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ name: username.value }),
       })
@@ -59,60 +55,60 @@ form.addEventListener("submit", (e) => {
           // Now need to store the usersName and userID to local storage
           localStorage.setItem("usersName", username.value);
           localStorage.setItem("userID", userID);
-          console.log('Success in adding user:', data);
+          console.log("Success in adding user:", data);
           console.log(userID);
 
-          socket.emit("chat message", (username.value + ": " + msgFromUser));
-          // Message has been sent to the back end. Now need to call the 
+          socket.emit("chat message", username.value + ": " + msgFromUser);
+          // Message has been sent to the back end. Now need to call the
           // API to add to the database
           // First need to build an object of the message and user
           let newMsg = {
             message: msgFromUser,
             UserId: userID,
-          }
+          };
           // Now call the API with the newMsg object
-          fetch('/api/messages', {
-            method: 'POST',
+          fetch("/api/messages", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(newMsg),
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log('Success in adding msg:', data);
+              console.log("Success in adding msg:", data);
             })
             .catch((error) => {
-              console.error('Error:', error);
+              console.error("Error:", error);
             });
         })
         .catch((error) => {
-          console.error('Error:', error);
+          console.error("Error:", error);
         });
     } else {
       // User exists, so just need to post and save the message
-      socket.emit("chat message", (username.value + ": " + input.value));
-      // Message has been sent to the back end. Now need to call the 
+      socket.emit("chat message", username.value + ": " + input.value);
+      // Message has been sent to the back end. Now need to call the
       // API to add to the database
       // First need to build an object of the message and user
       let newMsg = {
         message: input.value,
         UserId: userID,
-      }
+      };
       // Now call the API with the newMsg object
-      fetch('/api/messages', {
-        method: 'POST',
+      fetch("/api/messages", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(newMsg),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Success in adding msg:', data);
+          console.log("Success in adding msg:", data);
         })
         .catch((error) => {
-          console.error('Error:', error);
+          console.error("Error:", error);
         });
     }
 
@@ -129,5 +125,3 @@ socket.on("chat message", (msg) => {
   // Auto scroll to the bottom any time a new message is received
   messages.scrollTop = messages.scrollHeight;
 });
-
-
