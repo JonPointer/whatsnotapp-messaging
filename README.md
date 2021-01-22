@@ -54,8 +54,8 @@ Contact the authors with questions via GitHub or email at:
 
 ## Screenshot
 
-![Screenshot](./TBD.png)
+![Screenshot](./public/images/screen-capture.png)
 
 ## Video
 
-[Link to screen recording demo](https://TBD)
+[Link to screen recording demo](https://drive.google.com/file/d/1tQVQXm0XCM4dF-P9DhO8mP0cxNZr2sge/view)
