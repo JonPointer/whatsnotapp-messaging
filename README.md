@@ -16,6 +16,7 @@ A messaging application utilizing socket.io, sequelize, mysql, and handlebars. E
 - [Questions](#questions)
 - [Screenshot](#screenshot)
 - [Video](#video)
+- [Hosted App Link](#Hosted-App-Link)
 
 ## Installation
 
@@ -59,3 +60,7 @@ Contact the authors with questions via GitHub or email at:
 ## Video
 
 [Link to screen recording demo](https://drive.google.com/file/d/1tQVQXm0XCM4dF-P9DhO8mP0cxNZr2sge/view)
+
+## Hosted App Link
+
+[Link to hosted app on Heroku](https://whats-not-app.herokuapp.com/)
